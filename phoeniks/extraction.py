@@ -243,7 +243,7 @@ class Extraction:
             if self.data.mode == "reference_sample_dark_standard_deviations":
                 svmaf_obj = SVMAF(self)
                 n_smooth, k_smooth, alpha_smooth = svmaf_obj.run(thickness=thickness)
-                thickness_error_dict["tv_s"][idx] = np.sum(np.abs(n - n_smooth)) + np.sum(np.abs(k - k_smooth))
+                thickness_error_dict["Total Variation, SVMAF"][idx] = np.sum(np.abs(n - n_smooth)) + np.sum(np.abs(k - k_smooth))
         for key, value in thickness_error_dict.items():
             if np.all(np.isnan(value)):
                 del thickness_error_dict[key]
