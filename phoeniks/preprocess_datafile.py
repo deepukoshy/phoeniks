@@ -19,14 +19,14 @@ class ProcessedData:
 
 
 
-def preprocess_data(input_file, num_points=100, use_zero_padding=False, power_of_2=None):
+def preprocess_data(input_file,num_ref=4, num_sam=4, num_points=100, use_zero_padding=False, power_of_2=None):
     # Load the data from the input file, skipping the first row (headers)
     data = np.loadtxt(input_file, delimiter='\t', skiprows=1)
 
     # Extract the columns
     time = data[:, 0]
-    ref_data_td = data[:, 1:4]
-    sample_data_td = data[:, 4:7]
+    ref_data_td = data[:, 1:1+num_ref]
+    sample_data_td = data[:, 1+num_ref:1+num_ref+num_sam]
 
     # Calculate the time interval
     time_interval = time[1] - time[0]
